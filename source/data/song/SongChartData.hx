@@ -1,25 +1,31 @@
 package data.song;
 
-typedef SongChartData =
+typedef SongMetaData =
 {
 	var song:String;
-	var notes:Array<SongSection>;
 	var bpm:Int;
 	var needsVoices:Bool;
-	var speed:Float;
-
 	var player1:String;
 	var player2:String;
+	var speed:Int;
+	var notes:Array<SongNote>;
+	// var events:Array<SongEvent>;
 }
 
-typedef SongSection =
+typedef SongNote =
 {
-	var sectionNotes:Array<Dynamic>;
-	var lengthInSteps:Int;
-	var typeOfSection:Int;
+	var id:Int;
+	var position:SNPosition;
+}
 
-	var bpm:Float;
-	var changeBPM:Bool;
+typedef SongEvent =
+{
+	var id:String;
+	var position:SNPosition;
+}
 
-	var altAnim:Bool;
+typedef SNPosition =
+{
+	var beat:Float;
+	var step:Float;
 }

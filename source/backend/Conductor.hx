@@ -1,17 +1,17 @@
 package backend;
 
-import data.song.SongChartData;
+import data.song.SongChartData.SongMetaData;
 
 typedef BPMChangeEvent =
 {
 	var stepTime:Int;
 	var songTime:Float;
-	var bpm:Int;
+	var bpm:Float;
 }
 
 class Conductor
 {
-	public static var bpm:Int = 100;
+	public static var bpm:Float = 100;
 	public static var crochet:Float = ((60 / bpm) * 1000); // beats in milliseconds
 	public static var stepCrochet:Float = crochet / 4; // steps in milliseconds
 	public static var songPosition:Float;
@@ -25,7 +25,7 @@ class Conductor
 
 	public function new() {}
 
-	public static function mapBPMChanges(song:SongChartData)
+	public static function mapBPMChanges(song:SongMetaData)
 	{
 		bpmChangeMap = [];
 
@@ -34,7 +34,7 @@ class Conductor
 		var totalPos:Float = 0;
 		for (i in 0...song.notes.length)
 		{
-			if (song.notes[i].changeBPM && song.notes[i].bpm != curBPM)
+			/*if (song.notes[i].changeBPM && song.notes[i].bpm != curBPM)
 			{
 				curBPM = song.notes[i].bpm;
 				var event:BPMChangeEvent = {
@@ -43,9 +43,9 @@ class Conductor
 					bpm: curBPM
 				};
 				bpmChangeMap.push(event);
-			}
+			}*/
 
-			var deltaSteps:Int = song.notes[i].lengthInSteps;
+			var deltaSteps:Int = 16; // song.notes[i].lengthInSteps;
 			totalSteps += deltaSteps;
 			totalPos += ((60 / curBPM) * 1000 / 4) * deltaSteps;
 		}

@@ -1,0 +1,17 @@
+{
+    "song": "Tutorial",
+    "bpm": 100,
+    "needsVoices": true,   
+    "player1": "bf",
+    "player2": "gf",
+    "speed": 1,
+    "notes": [
+        {
+            "id": 0,
+            "position": {
+                "beat": 0,
+                "step": 0
+            }
+        }
+    ]
+}

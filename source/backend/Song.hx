@@ -1,7 +1,7 @@
 package backend;
 
-import data.song.SongChartData.SongChartData;
-import data.song.SongChartData.SongSection;
+import data.song.SongMetaData.SongMetaData;
+import data.song.SongMetaData.SongSection;
 
 class Song
 {
@@ -21,7 +21,7 @@ class Song
 		this.bpm = bpm;
 	}
 
-	public static function loadFromJson(jsonInput:String, ?folder:String):SongChartData
+	public static function loadFromJson(jsonInput:String, ?folder:String):SongMetaData
 	{
 		var rawJson = LimeAssets.getText(BackendAssets.json('songs/${folder.toLowerCase()}/${jsonInput.toLowerCase()}')).trim();
 
@@ -34,9 +34,9 @@ class Song
 		return parseJSONshit(rawJson);
 	}
 
-	public static function parseJSONshit(rawJson:String):SongChartData
+	public static function parseJSONshit(rawJson:String):SongMetaData
 	{
-		var swagShit:SongChartData = cast Json.parse(rawJson).song;
+		var swagShit:SongMetaData = cast Json.parse(rawJson).song;
 		return swagShit;
 	}
 }
