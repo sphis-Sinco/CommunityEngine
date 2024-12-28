@@ -13,11 +13,13 @@ class PlayState extends MusicBeatState
 	public var OpponentVocals:FlxSound;
 	public var PlayerVocals:FlxSound;
 
+	public var song:String = 'Tutorial';
+
 	override public function create()
 	{
-		Instrumental = FlxG.sound.load(BackendAssets.track('songs/tutorial/Inst'));
-		OpponentVocals = FlxG.sound.load(BackendAssets.track('songs/tutorial/Voices-gf'));
-		PlayerVocals = FlxG.sound.load(BackendAssets.track('songs/tutorial/Voices-bf'));
+		Instrumental = FlxG.sound.load(BackendAssets.track('songs/${song.toLowerCase()}/Inst'));
+		OpponentVocals = FlxG.sound.load(BackendAssets.track('songs/${song.toLowerCase()}/Voices-gf'));
+		PlayerVocals = FlxG.sound.load(BackendAssets.track('songs/${song.toLowerCase()}/Voices-bf'));
 
 		Instrumental.play();
 		OpponentVocals.play();
