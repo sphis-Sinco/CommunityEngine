@@ -1,16 +1,100 @@
 {
-    "name": "Boyfriend",
-    "imagePath": "characters/BOYFRIEND",
-    "flipX": true,
-    "animations": [
-        {
-            "animationName": "idle",
-            "symbolName": "BF idle dance",
-            "animationOffsets": [
-                -5,
-                0
-            ],
-            "loopingAnimation": true
-        }
-    ]
+  "name": "Boyfriend",
+  "imagePath": "characters/BOYFRIEND",
+  "flipX": true,
+  "animations": [
+    {
+      "animationName": "idle",
+      "symbolName": "BF idle dance",
+      "animationOffsets": [-5, 0],
+      "loopingAnimation": true
+    },
+    {
+      "animationName": "singLEFT",
+      "symbolName": "BF NOTE LEFT0",
+      "animationOffsets": [12, -6]
+    },
+    {
+      "animationName": "singDOWN",
+      "symbolName": "BF NOTE DOWN0",
+      "animationOffsets": [-10, -50]
+    },
+    {
+      "animationName": "singUP",
+      "symbolName": "BF NOTE UP0",
+      "animationOffsets": [-29, 27]
+    },
+    {
+      "animationName": "singRIGHT",
+      "symbolName": "BF NOTE RIGHT0",
+      "animationOffsets": [-38, -7]
+    },
+    {
+      "animationName": "singLEFTmiss",
+      "symbolName": "BF NOTE LEFT MISS",
+      "animationOffsets": [12, 24]
+    },
+    {
+      "animationName": "singDOWNmiss",
+      "symbolName": "BF NOTE DOWN MISS",
+      "animationOffsets": [-11, -19]
+    },
+    {
+      "animationName": "singUPmiss",
+      "symbolName": "BF NOTE UP MISS",
+      "animationOffsets": [-29, 27]
+    },
+    {
+      "animationName": "singRIGHTmiss",
+      "symbolName": "BF NOTE RIGHT MISS",
+      "animationOffsets": [-30, 21]
+    },
+    {
+      "animationName": "preAttack",
+      "symbolName": "bf pre attack"
+    },
+    {
+      "animationName": "attack",
+      "symbolName": "boyfriend attack"
+    },
+    {
+      "animationName": "dodge",
+      "symbolName": "boyfriend dodge"
+    },
+    {
+      "animationName": "hey",
+      "symbolName": "BF HEY!!",
+      "animationOffsets": [7, 4]
+    },
+    {
+      "animationName": "hit",
+      "symbolName": "BF hit"
+    },
+    {
+      "animationName": "firstDeath",
+      "symbolName": "BF dies",
+      "animationOffsets": [-37, 11]
+    },
+    {
+      "animationName": "fakeoutDeath",
+      "symbolName": "BF dies",
+      "animationOffsets": [-37, 11]
+    },
+    {
+      "animationName": "deathLoop",
+      "symbolName": "BF Dead Loop",
+      "loopingAnimation": true,
+      "animationOffsets": [-37, 5]
+    },
+    {
+      "animationName": "deathConfirm",
+      "symbolName": "BF Dead confirm",
+      "animationOffsets": [-37, 69]
+    },
+    {
+      "animationName": "scared",
+      "symbolName": "BF idle shaking",
+      "animationOffsets": [-4, 0]
+    }
+  ]
 }

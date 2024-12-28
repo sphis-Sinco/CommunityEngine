@@ -28,10 +28,18 @@ class Character extends FlxSprite
 			if (jsonData.flipX)
 				flipX = !flipX;
 
+			var index:Int = 0;
 			for (animation in jsonData.animations)
 			{
+				animation.animationName ??= 'anim-$index';
+				animation.loopingAnimation ??= false;
+				animation.animationOffsets ??= [0, 0];
+				animation.animationOffsets[0] ??= 0;
+				animation.animationOffsets[1] ??= 0;
+
 				this.animation.addByPrefix(animation.animationName, animation.symbolName, 24, animation.loopingAnimation);
 				addOffset(animation.animationName, animation.animationOffsets[0], animation.animationOffsets[1]);
+				index++;
 			}
 
 			if (this.animOffsets.exists('idle'))

@@ -11,8 +11,8 @@ typedef CharacterMeta =
 
 typedef CharacterAnimationData =
 {
-	var animationName:String;
+	var ?animationName:String;
 	var symbolName:String;
-	var animationOffsets:Array<Int>;
-	var loopingAnimation:Bool;
+	var ?animationOffsets:Array<Float>;
+	var ?loopingAnimation:Bool;
 }
