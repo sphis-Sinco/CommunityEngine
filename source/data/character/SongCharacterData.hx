@@ -13,6 +13,6 @@ typedef CharacterAnimationData =
 {
 	var ?animationName:String;
 	var symbolName:String;
-	var ?animationOffsets:Array<Float>;
+	var ?animationOffsets:Null<Array<Float>>;
 	var ?loopingAnimation:Bool;
 }

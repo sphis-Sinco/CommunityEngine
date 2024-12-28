@@ -33,12 +33,18 @@ class Character extends FlxSprite
 			{
 				animation.animationName ??= 'anim-$index';
 				animation.loopingAnimation ??= false;
-				animation.animationOffsets ??= [0, 0];
-				animation.animationOffsets[0] ??= 0;
-				animation.animationOffsets[1] ??= 0;
+				// animation.animationOffsets[0] ??= 0;
+				// animation.animationOffsets[1] ??= 0;
 
 				this.animation.addByPrefix(animation.animationName, animation.symbolName, 24, animation.loopingAnimation);
-				addOffset(animation.animationName, animation.animationOffsets[0], animation.animationOffsets[1]);
+				try
+				{
+					addOffset(animation.animationName, animation.animationOffsets[0], animation.animationOffsets[1]);
+				}
+				catch (e)
+				{
+					addOffset(animation.animationName);
+				}
 				index++;
 			}
 
@@ -48,6 +54,11 @@ class Character extends FlxSprite
 				// play the first animation it can find if no idle
 				playAnim(this.animation.getAnimationList()[0].name);
 		}
+	}
+
+	override function update(elapsed:Float)
+	{
+		super.update(elapsed);
 	}
 
 	public function addOffset(name:String, x:Float = 0, y:Float = 0)

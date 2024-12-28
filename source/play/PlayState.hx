@@ -27,8 +27,23 @@ class PlayState extends MusicBeatState
 		debugField.text = "Beat: " + curBeat;
 		debugField.text += "\nStep: " + curStep;
 
+		if (FlxG.keys.anyJustPressed([LEFT, RIGHT, UP, DOWN]))
+		{
+			var thekey = FlxG.keys.justPressed;
+
+			if (thekey.LEFT)
+				boyfriendCharacter.playAnim('singLEFT');
+			if (thekey.DOWN)
+				boyfriendCharacter.playAnim('singDOWN');
+			if (thekey.UP)
+				boyfriendCharacter.playAnim('singUP');
+			if (thekey.RIGHT)
+				boyfriendCharacter.playAnim('singRIGHT');
+		}
+
 		super.update(elapsed);
 	}
+
 	override function beatHit()
 	{
 		super.beatHit();
