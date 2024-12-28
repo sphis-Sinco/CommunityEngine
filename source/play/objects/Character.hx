@@ -10,6 +10,10 @@ class Character extends FlxSprite
 
 	public var isPlayer:Bool = false;
 
+	public var default_Animation:String = '';
+
+	public var singing:Bool = false;
+
 	override public function new(x:Float, y:Float, ?character:String = "bf", ?isPlayer:Bool = false)
 	{
 		animOffsets = new Map<String, Array<Dynamic>>();
@@ -48,17 +52,25 @@ class Character extends FlxSprite
 				index++;
 			}
 
-			if (this.animOffsets.exists('idle'))
-				playAnim('idle');
-			else
-				// play the first animation it can find if no idle
-				playAnim(this.animation.getAnimationList()[0].name);
+			revertToIdle();
 		}
 	}
 
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
+	}
+
+	public function revertToIdle()
+	{
+		if (this.animOffsets.exists('idle'))
+			playAnim('idle');
+		else
+			// play the first animation it can find if no idle
+			playAnim(this.animation.getAnimationList()[0].name);
+
+		if (default_Animation == '')
+			default_Animation = this.animation.name;
 	}
 
 	public function addOffset(name:String, x:Float = 0, y:Float = 0)
