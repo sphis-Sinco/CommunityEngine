@@ -4,6 +4,7 @@ import flixel.*;
 import flixel.addons.transition.*;
 import flixel.addons.ui.*;
 import flixel.math.*;
+import flixel.text.FlxText;
 import flixel.util.*;
 import haxe.Json;
 import haxe.format.JsonParser;
