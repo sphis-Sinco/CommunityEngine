@@ -17,19 +17,19 @@ class PlayState extends MusicBeatState
 
 	override public function create()
 	{
+		boyfriendCharacter = new Character(0, 0, 'bf', true);
+		boyfriendCharacter.screenCenter();
+		add(boyfriendCharacter);
+
 		Instrumental = FlxG.sound.load(BackendAssets.track('songs/${song.toLowerCase()}/Inst'));
 		OpponentVocals = FlxG.sound.load(BackendAssets.track('songs/${song.toLowerCase()}/Voices-gf'));
-		PlayerVocals = FlxG.sound.load(BackendAssets.track('songs/${song.toLowerCase()}/Voices-bf'));
+		PlayerVocals = FlxG.sound.load(BackendAssets.track('songs/${song.toLowerCase()}/Voices-${boyfriendCharacter.character}'));
 
 		Instrumental.play();
 		OpponentVocals.play();
 		PlayerVocals.play();
 
 		Conductor.changeBPM(100);
-
-		boyfriendCharacter = new Character(0, 0, 'bf', true);
-		boyfriendCharacter.screenCenter();
-		add(boyfriendCharacter);
 
 		#if debug add(debugField); #end
 

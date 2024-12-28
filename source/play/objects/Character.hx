@@ -14,10 +14,14 @@ class Character extends FlxSprite
 
 	public var singing:Bool = false;
 
+	public var character:String = 'bf';
+
 	override public function new(x:Float, y:Float, ?character:String = "bf", ?isPlayer:Bool = false)
 	{
 		animOffsets = new Map<String, Array<Dynamic>>();
 		super(x, y);
+
+		this.character = character;
 
 		jsonData = Json.parse(BackendAssets.readFile(BackendAssets.json('characters/$character')));
 
