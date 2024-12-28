@@ -3,7 +3,7 @@ package play;
 
 class PlayState extends MusicBeatState
 {
-	var debugField:FlxText = new FlxText(0, 10, 0);
+	var debugField:FlxText = new FlxText(3, 6, 0, "", 16);
 
 	override public function create()
 	{
