@@ -2,6 +2,7 @@
     "meta": {},
     "objects": {},
     "gameplay": {
+        "hideGF": false,
         "positions":{
             "player": [770, 270],
             "emotional_support": [400, 200],

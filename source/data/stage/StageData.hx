@@ -13,6 +13,7 @@ typedef StageObjectData = {}
 
 typedef StageGameplayData =
 {
+	var hideGF:Bool;
 	var positions:
 		{
 			var player:Array<Float>;

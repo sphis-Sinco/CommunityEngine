@@ -35,9 +35,9 @@ class PlayState extends MusicBeatState
 		add(daddyCharacter);
 
 		girlFriendCharacter = new Character(positions.emotional_support[0], positions.emotional_support[1], songJson.gf, true);
-		if (daddyCharacter.character != girlFriendCharacter.character)
+		if (daddyCharacter.character != girlFriendCharacter.character || stageJsonGameplayField.hideGF)
 			add(girlFriendCharacter);
-		else
+		else if (daddyCharacter.character == girlFriendCharacter.character)
 		{
 			daddyCharacter.setPosition(positions.emotional_support[0], positions.emotional_support[1]);
 		}
