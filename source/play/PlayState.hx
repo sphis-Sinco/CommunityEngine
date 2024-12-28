@@ -15,15 +15,15 @@ class PlayState extends MusicBeatState
 
 	override public function create()
 	{
-		Instrumental = FlxG.sound.load(BackendAssets.track('songs/wilted roses/Inst'));
-		OpponentVocals = FlxG.sound.load(BackendAssets.track('songs/wilted roses/Voices-Opponent'));
-		PlayerVocals = FlxG.sound.load(BackendAssets.track('songs/wilted roses/Voices-Player'));
+		Instrumental = FlxG.sound.load(BackendAssets.track('songs/tutorial/Inst'));
+		OpponentVocals = FlxG.sound.load(BackendAssets.track('songs/tutorial/Voices-gf'));
+		PlayerVocals = FlxG.sound.load(BackendAssets.track('songs/tutorial/Voices-bf'));
 
 		Instrumental.play();
 		OpponentVocals.play();
 		PlayerVocals.play();
 
-		Conductor.changeBPM(150);
+		Conductor.changeBPM(100);
 
 		boyfriendCharacter = new Character(0, 0, 'bf', true);
 		boyfriendCharacter.screenCenter();
