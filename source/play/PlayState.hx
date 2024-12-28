@@ -5,10 +5,16 @@ class PlayState extends MusicBeatState
 {
 	var debugField:FlxText = new FlxText(3, 6, 0, "", 16);
 
+	public var boyfriendCharacter:Character;
+
 	override public function create()
 	{
 		FlxG.sound.play(BackendAssets.track('songs/tutorial/Inst'));
 		Conductor.changeBPM(100);
+
+		boyfriendCharacter = new Character(0, 0, 'bf', true);
+		boyfriendCharacter.screenCenter();
+		add(boyfriendCharacter);
 
 		#if debug add(debugField); #end
 
@@ -22,5 +28,9 @@ class PlayState extends MusicBeatState
 		debugField.text += "\nStep: " + curStep;
 
 		super.update(elapsed);
+	}
+	override function beatHit()
+	{
+		super.beatHit();
 	}
 }

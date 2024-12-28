@@ -1,0 +1,16 @@
+{
+    "name": "Boyfriend",
+    "imagePath": "characters/BOYFRIEND",
+    "flipX": true,
+    "animations": [
+        {
+            "animationName": "idle",
+            "symbolName": "BF idle dance",
+            "animationOffsets": [
+                -5,
+                0
+            ],
+            "loopingAnimation": true
+        }
+    ]
+}

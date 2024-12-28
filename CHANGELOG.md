@@ -6,3 +6,4 @@
     - MusicBeatState
     - Song
     - Sections
+    - Characters

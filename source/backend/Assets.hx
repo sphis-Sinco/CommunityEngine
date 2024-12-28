@@ -1,5 +1,7 @@
 package backend;
 
+import flixel.graphics.frames.FlxAtlasFrames;
+
 class Assets
 {
 	public static var SOUND_EXT:String = "wav";
@@ -30,6 +32,9 @@ class Assets
 
 	public static function image(file:String)
 		return getAssetPath('images/$file.png');
+
+	public static function imageXml(file:String)
+		return getAssetPath('images/$file.xml');
 
 	public static function sound(file:String)
 		return getAssetPath('sounds/$file.$SOUND_EXT');
@@ -74,10 +79,12 @@ class Assets
 
 	public static function readFile(path:String)
 	{
-		#if sys
 		if (pathExists(path))
+			#if sys
 			return sys.io.File.getContent(path);
-		#end
+			#else
+			return LimeAssets.getText(path);
+			#end
 
 		return '';
 	}
@@ -120,5 +127,9 @@ class Assets
 					}
 				}
 			}
+	}
+	public static function sparrowImage(file:String)
+	{
+		return FlxAtlasFrames.fromSparrow(image(file), imageXml(file));
 	}
 }
