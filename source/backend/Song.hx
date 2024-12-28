@@ -1,25 +1,13 @@
 package backend;
 
-import backend.Section.SwagSection;
-
-typedef SwagSong =
-{
-	var song:String;
-	var notes:Array<SwagSection>;
-	var bpm:Int;
-	var needsVoices:Bool;
-	var speed:Float;
-
-	var player1:String;
-	var player2:String;
-	var validScore:Bool;
-}
+import data.song.SongChartData.SongChartData;
+import data.song.SongChartData.SongSection;
 
 class Song
 {
 	public var song:String;
-	public var notes:Array<SwagSection>;
-	public var bpm:Int;
+	public var notes:Array<SongSection>;
+	public var bpm:Float;
 	public var needsVoices:Bool = true;
 	public var speed:Float = 1;
 
@@ -33,7 +21,7 @@ class Song
 		this.bpm = bpm;
 	}
 
-	public static function loadFromJson(jsonInput:String, ?folder:String):SwagSong
+	public static function loadFromJson(jsonInput:String, ?folder:String):SongChartData
 	{
 		var rawJson = LimeAssets.getText(BackendAssets.json('songs/${folder.toLowerCase()}/${jsonInput.toLowerCase()}')).trim();
 
@@ -46,10 +34,9 @@ class Song
 		return parseJSONshit(rawJson);
 	}
 
-	public static function parseJSONshit(rawJson:String):SwagSong
+	public static function parseJSONshit(rawJson:String):SongChartData
 	{
-		var swagShit:SwagSong = cast Json.parse(rawJson).song;
-		swagShit.validScore = true;
+		var swagShit:SongChartData = cast Json.parse(rawJson).song;
 		return swagShit;
 	}
 }

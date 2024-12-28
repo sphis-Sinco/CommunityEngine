@@ -1,6 +1,6 @@
 package backend;
 
-import backend.Song.SwagSong;
+import data.song.SongChartData;
 
 typedef BPMChangeEvent =
 {
@@ -25,7 +25,7 @@ class Conductor
 
 	public function new() {}
 
-	public static function mapBPMChanges(song:SwagSong)
+	public static function mapBPMChanges(song:SongChartData)
 	{
 		bpmChangeMap = [];
 
