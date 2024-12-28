@@ -1,0 +1,2 @@
+[Friday night Funkin](https://www.newgrounds.com/portal/view/770371) belongs to [Funkin Crew inc](https://github.com/FunkinCrew)
+[Friday Night Funkin Community Engine](https://github.com/sphis-Sinco/CommunityEngine) belongs to [Sinco](https://www.youtube.com/@sphis-Sinco) and all the git contributors. if there are any
