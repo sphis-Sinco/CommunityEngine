@@ -1,0 +1,11 @@
+{
+    "meta": {},
+    "objects": {},
+    "gameplay": {
+        "positions":{
+            "player": [770, 270],
+            "emotional_support": [400, 200],
+            "opponent": [100, 170]
+        }
+    }
+}

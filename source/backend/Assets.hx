@@ -81,9 +81,23 @@ class Assets
 	{
 		if (pathExists(path))
 			#if sys
-			return sys.io.File.getContent(path);
+			try
+			{
+				return sys.io.File.getContent(path);
+			}
+			catch (e)
+			{
+				return '';
+			}
 			#else
-			return LimeAssets.getText(path);
+			try
+			{
+				return LimeAssets.getText(path);
+			}
+			catch (e)
+			{
+				return '';
+			}
 			#end
 
 		return '';

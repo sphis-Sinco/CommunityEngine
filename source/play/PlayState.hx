@@ -1,14 +1,16 @@
 package play;
 
 import data.song.SongChartData.SongMetaData;
+import data.stage.StageData;
 import flixel.sound.FlxSound;
-
 
 class PlayState extends MusicBeatState
 {
 	var debugField:FlxText = new FlxText(3, 6, 0, "", 16);
 
 	public var boyfriendCharacter:Character;
+	public var daddyCharacter:Character;
+	public var girlFriendCharacter:Character;
 
 	public var Instrumental:FlxSound;
 	public var OpponentVocals:FlxSound;
@@ -16,17 +18,35 @@ class PlayState extends MusicBeatState
 
 	public var songName:String = 'Tutorial';
 	public var songJson:SongMetaData;
+	public var songStageJson:StageData;
+
+	public var stageJsonGameplayField:StageGameplayData;
 
 	override public function create()
 	{
 		songJson = Json.parse(BackendAssets.readFile(BackendAssets.songJson(songName.toLowerCase())));
+		songStageJson = Json.parse(BackendAssets.readFile(BackendAssets.json('stages/${songJson.stage}')));
 
-		boyfriendCharacter = new Character(0, 0, songJson.player1, true);
-		boyfriendCharacter.screenCenter();
+		stageJsonGameplayField = songStageJson.gameplay;
+
+		var positions = stageJsonGameplayField.positions;
+
+		daddyCharacter = new Character(positions.opponent[0], positions.opponent[1], songJson.player2, true);
+		add(daddyCharacter);
+
+		girlFriendCharacter = new Character(positions.emotional_support[0], positions.emotional_support[1], songJson.gf, true);
+		if (daddyCharacter.character != girlFriendCharacter.character)
+			add(girlFriendCharacter);
+		else
+		{
+			daddyCharacter.setPosition(positions.emotional_support[0], positions.emotional_support[1]);
+		}
+
+		boyfriendCharacter = new Character(positions.player[0], positions.player[1], songJson.player1, true);
 		add(boyfriendCharacter);
 
 		Instrumental = FlxG.sound.load(BackendAssets.track('songs/${songName.toLowerCase()}/Inst'));
-		OpponentVocals = FlxG.sound.load(BackendAssets.track('songs/${songName.toLowerCase()}/Voices-gf'));
+		OpponentVocals = FlxG.sound.load(BackendAssets.track('songs/${songName.toLowerCase()}/Voices-${daddyCharacter.character}'));
 		PlayerVocals = FlxG.sound.load(BackendAssets.track('songs/${songName.toLowerCase()}/Voices-${boyfriendCharacter.character}'));
 
 		Instrumental.play();
@@ -35,6 +55,7 @@ class PlayState extends MusicBeatState
 
 		Conductor.changeBPM(songJson.bpm);
 
+		debugField.scrollFactor.set();
 		#if debug add(debugField); #end
 
 		super.create();
@@ -77,8 +98,19 @@ class PlayState extends MusicBeatState
 			boyfriendCharacter.playAnim(boyfriendCharacter.default_Animation);
 		}
 
+		if (daddyCharacter.animation.name != daddyCharacter.default_Animation && !daddyCharacter.singing)
+		{
+			daddyCharacter.playAnim(daddyCharacter.default_Animation);
+		}
+
+		if (girlFriendCharacter.animation.name != girlFriendCharacter.default_Animation && !girlFriendCharacter.singing)
+		{
+			girlFriendCharacter.playAnim(girlFriendCharacter.default_Animation);
+		}
+
 		super.beatHit();
 	}
+
 	public function resyncSounds()
 	{
 		Instrumental.pause();
