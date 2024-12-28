@@ -2,6 +2,7 @@ package backend;
 
 class Assets
 {
+	public static var SOUND_EXT:String = "wav";
 	public static var EXISTING_PATHS:Array<String> = [];
 
 	public static function getPath(path:String)
@@ -31,10 +32,10 @@ class Assets
 		return getAssetPath('images/$file.png');
 
 	public static function sound(file:String)
-		return getAssetPath('sounds/$file.wav');
+		return getAssetPath('sounds/$file.$SOUND_EXT');
 
 	public static function track(file:String)
-		return getAssetPath('music/$file.wav');
+		return getAssetPath('music/$file.$SOUND_EXT');
 
 	public static function pathExists(path:String)
 	{
