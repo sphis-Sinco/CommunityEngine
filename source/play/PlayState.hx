@@ -1,5 +1,6 @@
 package play;
 
+import data.song.SongChartData.SongMetaData;
 import flixel.sound.FlxSound;
 
 
@@ -13,23 +14,26 @@ class PlayState extends MusicBeatState
 	public var OpponentVocals:FlxSound;
 	public var PlayerVocals:FlxSound;
 
-	public var song:String = 'Tutorial';
+	public var songName:String = 'Tutorial';
+	public var songJson:SongMetaData;
 
 	override public function create()
 	{
-		boyfriendCharacter = new Character(0, 0, 'bf', true);
+		songJson = Json.parse(BackendAssets.readFile(BackendAssets.songJson(songName.toLowerCase())));
+
+		boyfriendCharacter = new Character(0, 0, songJson.player1, true);
 		boyfriendCharacter.screenCenter();
 		add(boyfriendCharacter);
 
-		Instrumental = FlxG.sound.load(BackendAssets.track('songs/${song.toLowerCase()}/Inst'));
-		OpponentVocals = FlxG.sound.load(BackendAssets.track('songs/${song.toLowerCase()}/Voices-gf'));
-		PlayerVocals = FlxG.sound.load(BackendAssets.track('songs/${song.toLowerCase()}/Voices-${boyfriendCharacter.character}'));
+		Instrumental = FlxG.sound.load(BackendAssets.track('songs/${songName.toLowerCase()}/Inst'));
+		OpponentVocals = FlxG.sound.load(BackendAssets.track('songs/${songName.toLowerCase()}/Voices-gf'));
+		PlayerVocals = FlxG.sound.load(BackendAssets.track('songs/${songName.toLowerCase()}/Voices-${boyfriendCharacter.character}'));
 
 		Instrumental.play();
 		OpponentVocals.play();
 		PlayerVocals.play();
 
-		Conductor.changeBPM(100);
+		Conductor.changeBPM(songJson.bpm);
 
 		#if debug add(debugField); #end
 

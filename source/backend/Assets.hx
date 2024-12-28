@@ -27,8 +27,8 @@ class Assets
 	public static function json(file:String)
 		return getDataPath('$file.json');
 
-	public static function pageFile(file:String)
-		return json('pages/$file');
+	public static function songJson(song:String)
+		return json('songs/$song/$song');
 
 	public static function image(file:String)
 		return getAssetPath('images/$file.png');
